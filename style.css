@@ -1,0 +1,49 @@
+
+.header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.intro {
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+
+}
+
+
+.regionbutton-container {
+    display: flex;
+    gap: 10px;
+    justify-content:center;
+}
+
+.region-button {
+    display:inline-block;
+    font-size: 18px;
+    width:120px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+}
+
+.recommendations-container {
+    display: flex;
+    justify-content: center;
+    align-content:center;
+}
+
+.footer {
+    background-color: black;
+    color:white;
+    bottom:0;
+    padding:5px;
+    text-align: center;
+    position: fixed;
+    width:100%
+}
+.highlighted {
+    background-color: pink;
+}
