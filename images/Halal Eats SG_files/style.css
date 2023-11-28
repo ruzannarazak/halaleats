@@ -1,0 +1,89 @@
+body {
+    background-color: whitesmoke;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.intro {
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+
+}
+
+.regionbutton-container {
+    display: flex;
+    gap: 10px;
+    justify-content:center;
+}
+
+.region-button {
+    display:inline-block;
+    font-size: 18px;
+    width:120px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+}
+
+.footer {
+    background-color: black;
+    color:white;
+    bottom:0;
+    padding:5px;
+    text-align: center;
+    position: fixed;
+    width:100%
+}
+
+.restaurant-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.region-button.highlighted {
+    background-color: pink;
+}
+.restaurant-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 1px;
+    background: white;
+    width: 700px;
+    border-radius: 10px;
+
+
+}
+
+img {
+    width: 200px; /* Adjust the width as needed */
+    height: auto;
+    margin-right: 20px; /* Adjust the margin as needed */
+    border-radius: 10px;
+    padding: 15px;
+
+}
+
+.details {
+    flex: 1;
+}
+
+h2 a {
+    margin: 0;
+    text-decoration: none;
+    color: black;
+
+}
+    
+    p {
+    margin-bottom: 15px;
+}
