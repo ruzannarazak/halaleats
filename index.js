@@ -1,8 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const restaurantList = document.getElementById('restaurant-list');
     const regionButtons = document.querySelectorAll(".region-button");
-
+    const cuisineDropdown = document.getElementById('cuisine-dropdown');
+    const applyFiltersButton = document.getElementById('apply-filters-button');
+    
+      let selectedRegion = 'All';
+      let selectedCuisine = 'All';
+  
     // List of restaurants
+  
     const restaurants = [
         {
             name: "Elfuego by COLLIN'S",
@@ -27,6 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "images/pouletbijou.jpeg",
         },
         {
+            name: "The Original Boat Noodle",
+            region: "East",
+            neighbourhood: "Changi",
+            cuisine: "Thai",
+            category: "Restaurant",
+            price: "$",
+            link: "https://www.google.com/maps/place/The+Original+Boat+Noodle/@1.3294859,103.9598919,14.54z/data=!3m1!5s0x31da3cd7a2f40b67:0x6c70a15f6ac15168!4m14!1m7!3m6!1s0x31da3d97aff964db:0x34dd71619006d21d!2sThe+Original+Boat+Noodle!8m2!3d1.3342227!4d103.9622105!16s%2Fg%2F11f5v5kkq_!3m5!1s0x31da3d97aff964db:0x34dd71619006d21d!8m2!3d1.3342227!4d103.9622105!16s%2Fg%2F11f5v5kkq_?entry=ttu",
+            instagram: "hhttps://www.instagram.com/boatnoodlesg",
+            image: "images/oriboatnood.jpeg",
+        },
+        {
             name: "Suki-Suki Hot Pot",
             region: "North",
             neighbourhood:"Yishun",
@@ -38,14 +55,47 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "images/sukisuki.jpeg",
         },
         {
+            name: "Coba Coba",
+            region: "North",
+            neighbourhood:"Yishun",
+            cuisine: "Malay",
+            category: "Coffee Shop",
+            price: "$",
+            link: "https://www.google.com/maps/place/Coba+Coba/@1.4315973,103.8310066,17z/data=!3m1!5s0x31da14652bd7fd65:0x650ae11022b6a2cc!4m17!1m10!3m9!1s0x31da1465327d33a5:0x956cc1a1deef981f!2sCoba+Coba!8m2!3d1.4315919!4d103.8335815!10e5!14m1!1BCgIgAQ!16s%2Fg%2F11bw4svmjy!3m5!1s0x31da1465327d33a5:0x956cc1a1deef981f!8m2!3d1.4315919!4d103.8335815!16s%2Fg%2F11bw4svmjy?entry=ttu",
+            instagram: "https://www.instagram.com/cobasg/",
+            image: "images/cobacoba.jpeg",
+        },
+        {
             name: "Deanna's Kitchen",
             region: "West",
             neighbourhood: "Jurong",
             cuisine: "Chinese",
             category: "Coffee shop",
             price: "$",
-            link: "https://www.google.com/maps/place/Deanna's+Kitchen+Kembangan+Outlet-+Authentic+Halal+Prawn+Noodles/@1.3196624,103.9100336,17z/data=!3m1!4b1!4m6!3m5!1s0x31da19e025fcc2fb:0xbb58f071ac363960!8m2!3d1.319657!4d103.9126085!16s%2Fg%2F11ks217psx?entry=ttu",
+            link: "https://www.google.com/maps/place/Deanna%E2%80%99s+Kitchen+Jurong+East+Outlet-+Authentic+Halal+Prawn+Noodles/@1.3392644,103.7365241,17z/data=!3m2!4b1!5s0x31da101a5e0384db:0x57c7ec5427782985!4m6!3m5!1s0x31da174282284349:0x8ae5be79213bf3f4!8m2!3d1.339259!4d103.739099!16s%2Fg%2F11g9gpd6y4?entry=ttu",
             image: "images/deanna2.jpeg",
+        },
+        {
+            name: "Fluff Stack",
+            region: "West",
+            neighbourhood: "Jurong",
+            cuisine: "Dessert",
+            category: "Cafe",
+            price: "$$",
+            link: "https://www.google.com/maps/place/Fluff+Stack+(Westgate)/@1.3343838,103.7402086,17z/data=!3m2!4b1!5s0x31da100fa832bb29:0x9abb5ecccfd1d4bd!4m6!3m5!1s0x31da11e6ff1de531:0xa46be4f9016c66b4!8m2!3d1.3343784!4d103.7427835!16s%2Fg%2F11ll8bfqjm?entry=ttu",
+            instagram: "https://www.instagram.com/fluffstack/",
+            image: "images/fluffstack.jpeg",
+        },
+        {
+            name: "Poulet",
+            region: "West",
+            neighbourhood: "Jurong",
+            cuisine: "French",
+            category: "Restaurant",
+            price: "$$",
+            link: "https://www.google.com/maps/place/Poulet+-+Westgate/@1.3338285,103.7399068,17z/data=!3m2!4b1!5s0x31da100fa832bb29:0x9abb5ecccfd1d4bd!4m6!3m5!1s0x31da100faaff69d9:0x75de55a117e43573!8m2!3d1.3338231!4d103.7424817!16s%2Fg%2F11c51rbbn2?entry=ttu",
+            instagram: "https://www.instagram.com/pouletsingapore/",
+            image: "images/pouletbijou.jpeg",
         },
         {
             name: "Anna's",
@@ -58,6 +108,18 @@ document.addEventListener('DOMContentLoaded', () => {
             instagram: "https://www.instagram.com/annassourdough_official",
             image: "images/annas.jpeg",
         },
+        {
+            name: "Fluff Stack",
+            region: "Central",
+            neighbourhood: "City Hall",
+            cuisine: "Dessert",
+            category: "Cafe",
+            price: "$$",
+            link: "https://www.google.com/maps/place/Fluff+Stack+(Suntec)/@1.2944681,103.8554395,17z/data=!3m2!4b1!5s0x31da19af25771877:0x64dca8531f0ccf88!4m6!3m5!1s0x31da193f8fa8128b:0x9bc14da8a1453e71!8m2!3d1.2944627!4d103.8580144!16s%2Fg%2F11h4wb5k8t?entry=ttu",
+            instagram: "https://www.instagram.com/fluffstack/",
+            image: "images/fluffstack.jpeg",
+        },
+    
         {
             name: "Konditory Artisan Bakes",
             region: "Central",
@@ -81,36 +143,55 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         
     ];
-
+  
     // highlight button on click 
-
+  
     function highlightOnClick(clickedButton) {
-        var regionButtons = document.querySelectorAll(".region-button");
-        for (var i = 0; i < regionButtons.length; i++) {
-            regionButtons[i].classList.remove("highlighted");
-        }
+      selectedRegion = clickedButton.getAttribute("data-region");
+        regionButtons.forEach((button) => {
+          button.classList.remove("highlighted");
+      });
         clickedButton.classList.add("highlighted");
     }
-
      // function to filter and display restaurants based on the selected region
-
+  
      function filterRestaurants(selectedRegion) {
-        restaurantList.innerHTML = "";
-
-        // filter restaurants based on the selected region
-        const filteredRestaurants = restaurants.filter(restaurant => restaurant.region === selectedRegion); 
-
+      console.log("Filtering with Region:", selectedRegion);
+      // Filter restaurants by the selected region
+          const selectedCuisine = cuisineDropdown.value;
+    
+  
+      let filteredRestaurants = restaurants.filter((restaurant) => {
+          return selectedRegion === 'All' || restaurant.region === selectedRegion;
+      });
+  
+      filteredRestaurants = filteredRestaurants.filter((restaurant) => {
+          return (
+              (selectedCuisine === "All" || restaurant.cuisine === selectedCuisine)
+          );
+       });
+  
+      console.log("After Region and Additional Filters:", filteredRestaurants);
+  
         // display filtered restaurants
-        filteredRestaurants.forEach((restaurant) => {
+        displayRestaurants(filteredRestaurants);
+      }
+    
+      function displayRestaurants(restaurants) {
+        restaurantList.innerHTML = '';
+  
+  
+  
+        restaurants.forEach((restaurant) => {
             const restaurantCard = document.createElement("div");
             restaurantCard.classList.add('restaurant-card');
-
+  
             // Restaurant Image
             const imageElement = document.createElement("img");
             imageElement.src = restaurant.image; 
             imageElement.alt = restaurant.name; 
             restaurantCard.appendChild(imageElement);
-
+  
             // restaurant details
             const details = document.createElement('div');
             details.classList.add("details");
@@ -124,21 +205,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const nameHeading = document.createElement('h2');
             nameHeading.appendChild(nameLink);
             details.appendChild(nameHeading);
-
+  
             // Neighbourhood 
             const neighbourhoodParagraph = document.createElement('p');
             neighbourhoodParagraph.textContent =`Neighbourhood: ${restaurant.neighbourhood}`;
             details.appendChild(neighbourhoodParagraph);
-
+  
             // Category
             const categoryParagraph = document.createElement('p');
             categoryParagraph.textContent = `Category: ${restaurant.category}`;
             details.appendChild(categoryParagraph);
-
+  
             // Price Point
-            const pricePointParagraph = document.createElement('p');
-            pricePointParagraph.textContent = `Price: ${restaurant.price}`;
-            details.appendChild(pricePointParagraph);
+            const priceParagraph = document.createElement('p');
+            priceParagraph.textContent = `Price: ${restaurant.price}`;
+            details.appendChild(priceParagraph);
         
             // Cuisine
             const cuisineParagraph = document.createElement('p');
@@ -149,12 +230,19 @@ document.addEventListener('DOMContentLoaded', () => {
             restaurantList.appendChild(restaurantCard);
         });
      }
-
+  
     regionButtons.forEach((button)=> {
         button.addEventListener('click',() => {
-            const selectedRegion = button.getAttribute("data-region");
+            selectedRegion = button.getAttribute("data-region");
             filterRestaurants(selectedRegion);
             highlightOnClick(button);
         });
     });
-});
+  
+    cuisineDropdown.addEventListener('change', () => {
+      // Use the last selected region
+      filterRestaurants(selectedRegion);
+   
+    });
+  });
+  

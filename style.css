@@ -51,6 +51,16 @@ body {
 .region-button.highlighted {
     background-color: pink;
 }
+
+
+.filters-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  
+  }
+
 .restaurant-card {
     display: flex;
     align-items: center;

@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FH1NJGS66J"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FH1NJGS66J');
+    </script>
 <body>
     <div class="header">
         <h1>Halal Eats</h1>
@@ -22,6 +31,26 @@
             <button data-region="Northeast" class="region-button">North East</button>
             <button data-region="East" class="region-button">East</button>
     </div>
+
+    <div class="filters-container">
+
+        <label for="cuisine-dropdown">Cuisine:</label>
+        <select id="cuisine-dropdown">
+            <option value="All">All</option>
+            <option value="Bakery">Bakery</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Dessert">Dessert</option>
+            <option value="European">European</option>
+            <option value="French">French</option>
+            <option value="Italian">Italian</option>
+            <option value="Malay">Malay</option>
+            <option value="Thai">Thai</option>
+            <option value="Western">Western</option>
+            
+            
+            <!-- Add more cuisine options as needed -->
+        </select>
+      </div>
     
     <div class="restaurant-container">
         <div id="restaurant-list"></div>
